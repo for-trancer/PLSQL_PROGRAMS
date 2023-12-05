@@ -1,0 +1,14 @@
+declare 
+    ename varchar(20):=&ename;
+    esalary employee.salary%type;
+        function sal(en in varchar) return employee.salary%type
+        is
+            s employee.salary%type;
+        begin
+            select salary into s from employee where name=en;
+            return s;
+        end;
+    begin
+        esalary:=sal(ename);
+        dbms_output.put_line(ename || ' ' || esalary);
+    end;
